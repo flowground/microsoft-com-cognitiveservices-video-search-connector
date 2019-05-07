@@ -1,0 +1,87 @@
+{
+    "title": "Video Search Client",
+    "description": "The Video Search API lets you search on Bing for video that are relevant to the user's search query, for insights about a video or for videos that are trending based on search requests made by others. This section provides technical details about the query parameters and headers that you use to request videos and the JSON response objects that contain them. For examples that show how to make requests, see [Searching the Web for Videos](https://docs.microsoft.com/azure/cognitive-services/bing-video-search/search-the-web).",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/microsoft.com/cognitiveservices-VideoSearch/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.cognitive.microsoft.com/bing/v7.0",
+                    "{Endpoint}",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyHeader": {
+                "label": "Ocp-Apim-Subscription-Key (apiKeyHeader)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Videos_Details": {
+            "main": "./lib/actions/Videos_Details.js",
+            "title": "The Video Detail Search API lets you search on Bing and get back insights about a video, such as related videos. This section provides technical details about the query parameters and headers that you use to request insights of videos and the JSON response objects that contain them. For examples that show how to make requests, see [Searching the Web for Videos](https://docs.microsoft.com/azure/cognitive-services/bing-video-search/search-the-web).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Videos_Details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Videos_Search": {
+            "main": "./lib/actions/Videos_Search.js",
+            "title": "The Video Search API lets you send a search query to Bing and get back a list of videos that are relevant to the search query. This section provides technical details about the query parameters and headers that you use to request videos and the JSON response objects that contain them. For examples that show how to make requests, see [Searching the Web for Videos](https://docs.microsoft.com/azure/cognitive-services/bing-video-search/search-the-web).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Videos_Search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Videos_Trending": {
+            "main": "./lib/actions/Videos_Trending.js",
+            "title": "The Video Trending Search API lets you search on Bing and get back a list of videos that are trending based on search requests made by others. The videos are broken out into different categories. For example, Top Music Videos. For a list of markets that support trending videos, see [Trending Videos](https://docs.microsoft.com/azure/cognitive-services/bing-video-search/trending-videos).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Videos_Trending.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
